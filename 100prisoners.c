@@ -11,11 +11,12 @@
 #include <unistd.h>
 #endif
 
-#define ARR_SIZE 100
+#define ARR_SIZE 100 // For the simulation to be as the problem states, must be set to 100, 1000, 10000 ...
 
 static int prisoners[ARR_SIZE], boxes[ARR_SIZE];
 static bool they_live = true;
 
+// Having problem passing an empty array to a function to fill, works fine with static arrays.
 void fill_arrays() {
     for (int i = 0; i < ARR_SIZE; i++) {
         prisoners[i] = i;
@@ -30,7 +31,7 @@ void swap(int *pa, int *pb) {
 }
 
 void shuffle(int *arr, size_t n) {
-    srand(time(NULL)); // Seed random, only works once per second.
+    srand(time(NULL)); // Seed random
     for(size_t i = n - 1; i > 0; i--) {
         int j = rand() % (i + 1);
         swap(&arr[i], &arr[j]);
@@ -47,7 +48,6 @@ void print_array(int *arr, size_t n) {
 
 
 int main(void) {
-
 
     fill_arrays();
 
